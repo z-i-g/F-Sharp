@@ -3,5 +3,3 @@ let days_in_month = function
 | 2 -> 28
 | 4|6|9|11-> 30
 | _ -> 0
-
-printfn "%d" (days_in_month 111)
