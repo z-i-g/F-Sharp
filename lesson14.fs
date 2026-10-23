@@ -61,29 +61,30 @@ let rec minus (xs1, xs2) =
             minus (xs1, tail2)
 
 // 40.3.1
-let smallest xs =
-    match xs with
+let rec smallest = function
     | [] -> None
-    | x :: _ -> Some x
+    | [x] -> Some x
+    | x :: tail ->
+        match smallest tail with
+        | None -> Some x
+        | Some minTail -> Some (if x < minTail then x else minTail)
 
 // 40.3.2
 let rec delete (n, xs) =
     match xs with
     | [] -> []
     | x :: tail ->
-        if x = n then 
-            tail
-        elif x > n then 
-            xs
-        else 
-            x :: delete (n, tail)
+        if x = n then tail
+        else x :: delete (n, tail)
 
 // 40.3.3
 let rec sort = function
     | [] -> []
-    | x :: tail -> 
-        insert (sort tail, x)
-
+    | xs ->
+        match smallest xs with
+        | None -> []
+        | Some minVal -> 
+            minVal :: sort (delete (minVal, xs))
 
 // 40.4
 let rec revrev = function
