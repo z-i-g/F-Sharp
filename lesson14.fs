@@ -77,7 +77,7 @@ let rec delete (n, xs) =
         if x = n then tail
         else x :: delete (n, tail)
 
-// 40.3.3
+// 40.3.3lesson
 let rec sort = function
     | [] -> []
     | xs ->
