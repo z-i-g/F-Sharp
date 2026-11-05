@@ -17,7 +17,3 @@ let seq_seq =
             yield! loop (i + 1)
         }
     loop 0
-
-
-printfn "Факториалы: %A" (fac_seq |> Seq.take 10 |> Seq.toList)
-printfn "Числа: %A" (seq_seq |> Seq.take 10 |> Seq.toList)
