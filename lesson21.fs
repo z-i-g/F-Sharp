@@ -12,7 +12,6 @@ let fac_seq =
 let seq_seq =
     let rec loop i =
         seq {
-            // Если индекс четный — делим на 2. Если нечетный — делим на 2, прибавляем 1 и ставим минус
             yield if i % 2 = 0 then i / 2 else -(i / 2 + 1)
             yield! loop (i + 1)
         }
